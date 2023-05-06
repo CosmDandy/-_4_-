@@ -1,0 +1,112 @@
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import ExtraTreesRegressor, AdaBoostRegressor, BaggingRegressor, GradientBoostingRegressor, \
+    RandomForestRegressor
+from sklearn.svm import LinearSVR, SVR
+from sklearn.kernel_ridge import KernelRidge
+from sklearn.linear_model import RANSACRegressor, Lars
+
+
+# write a function to get cross validation scores and fit the model
+def get_cv_scores(model):
+    scores = cross_val_score(model,
+                             X,
+                             y,
+                             cv=10,
+                             scoring='neg_mean_absolute_error')
+    print("Scores:", -scores)
+    print("Mean:", scores.mean())
+    print("Standard deviation:", scores.std())
+    # print('CV Mean: ', np.mean(scores))
+    # print('STD: ', np.std(scores))
+    print('\n')
+
+# fit the model
+lr = LinearRegression()
+lr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(lr)
+
+# fit the model
+rf = RandomForestRegressor()
+rf.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(rf)
+
+svr = SVR(kernel='linear')
+svr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(svr)
+
+# fit the model
+knr = KNeighborsRegressor()
+knr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(knr)
+
+# fit the model
+dtr = DecisionTreeRegressor()
+dtr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(dtr)
+
+# fit the model
+gbr = GradientBoostingRegressor()
+gbr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(gbr)
+
+# fit the model
+br = BaggingRegressor()
+br.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(br)
+
+# fit the model
+abr = AdaBoostRegressor()
+abr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(abr)
+
+# fit the model
+etr = ExtraTreesRegressor()
+etr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(etr)
+
+# fit the model
+lsvr = LinearSVR()
+lsvr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(lsvr)
+
+# fit the model
+krr = KernelRidge()
+krr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(krr)
+
+# fit the model
+rfr = RANSACRegressor()
+rfr.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(rfr)
+
+# fit the model
+lars = Lars()
+lars.fit(X_train, y_train)
+
+# get cross val scores
+get_cv_scores(lars)
